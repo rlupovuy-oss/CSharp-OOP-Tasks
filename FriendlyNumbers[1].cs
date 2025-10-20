@@ -1,0 +1,33 @@
+using System;
+
+class FriendlyNumbers
+{
+    static int SumOfDivisors(int n)
+    {
+        int sum = 1;
+        for (int i = 2; i <= n / 2; i++)
+        {
+            if (n % i == 0)
+                sum += i;
+        }
+        return sum;
+    }
+
+    static void Main()
+    {
+        Console.Write("Введіть початок діапазону a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введіть кінець діапазону b: ");
+        int b = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Дружні числа в заданому діапазоні:");
+        for (int i = a; i <= b; i++)
+        {
+            int j = SumOfDivisors(i);
+            if (j > i && j <= b && SumOfDivisors(j) == i)
+            {
+                Console.WriteLine($"{i} і {j}");
+            }
+        }
+    }
+}
